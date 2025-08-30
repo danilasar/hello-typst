@@ -98,17 +98,42 @@ set align(center)
 image("html.png")
 }
 
+#section[troff]
+```troff
+.NH 1
+Заголовок
+.PP
+У попа была собака. Она съела кусок мяса, он её
+.B убил.
+В землю закопал и на табличке написал, что
+.I "у попа была собака..."
+```
+
+
 #section[LaTeX]
 ```latex
-
-
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{hyperref}
+\begin{document}
+\section{Заголовок}
+У попа была \href{http://youtu.be/watch?v=dQw4w9WgXcQ}{подозрительная ссылка}. Она съела кусок мяса, он её \textbf{убил}. В землю закопал и на табличке написал, что \textit{у попа была подозрительная ссылка...}
+\end{document}
+```
 
 #section[Markdown]
 ```markdown
+# Заголовок
+У попа была [подозрительная ссылка](http://youtu.be/watch?v=dQw4w9WgXcQ). Она съела кусок мяса, он её **убил**. В землю закопал и на табличке написал, что *у попа была подозрительная ссылка...*
 ```
 
-#section("Typst")
+#section[Typst]
+```typst
+= Заголовок
+У попа была #link("http://youtu.be/watch?v=dQw4w9WgXcQ")[подозрительная ссылка]. Она съела кусок мяса, он её *убил*. В землю закопал и на табличке написал, что _у попа была подозрительная ссылка..._
 
+```
 
 
 
