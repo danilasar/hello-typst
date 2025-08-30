@@ -355,3 +355,83 @@ table.cell(colspan: 3, align: center, {
     }
   )
 }
+
+== Правила показа
+
+
+#{
+  show grid.cell: set align(horizon)
+  grid(columns: (1.5fr, 50mm, 1fr, auto),
+```typst
+#heading(depth: 3)[Тест]
+```,
+    {
+      set align(center + horizon)
+      set text(size: 1.5em)
+      $=>$
+    },
+    {
+      heading(depth: 3)[Тест]
+    }
+  )
+}
+
+== Правила показа
+#{
+  show grid.cell: set align(horizon)
+  grid(columns: (4fr, 50mm, 1fr, auto),
+```typst
+#show heading: it => {
+  block(
+    fill: rgb("#55aaff"),
+    inset: 5mm,
+    it
+  )
+}
+#heading(depth: 3)[Тест 1]
+#heading(depth: 4)[Тест 2]
+```,
+    {
+      set align(center + horizon)
+      set text(size: 1.5em)
+      $=>$
+    },
+    {
+      show heading: it => {
+        block(fill: rgb("#55aaff"), inset: 5mm, it)
+      }
+      heading(depth: 3)[Тест 1]
+      heading(depth: 3)[Тест 2]
+    }
+  )
+}
+
+#pagebreak()
+
+#{
+  show grid.cell: set align(horizon)
+  grid(columns: (215mm, 50mm),
+```typst
+#show heading.where(depth: 3): it => {
+  block(fill: rgb("#55aaff"), inset: 5mm, it)
+}
+#show heading.where(depth: 4): set heading(
+  supplement: emoji.heart
+)
+#heading(depth: 3)[Тест 1]
+#heading(depth: 4)[Тест 2]
+```,
+    {
+      show heading.where(depth: 3): it => {
+        block(fill: rgb("#55aaff"), inset: 5mm, it)
+      }
+      show heading.where(depth: 4): set heading(
+        supplement: emoji.heart
+      )
+      block(inset: 4mm, {
+      heading(depth: 3)[Тест 1]
+      heading(depth: 4)[Тест 2]
+      })
+    }
+  )
+}
