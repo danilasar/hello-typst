@@ -132,10 +132,89 @@ image("html.png")
 ```typst
 = Заголовок
 У попа была #link("http://youtu.be/watch?v=dQw4w9WgXcQ")[подозрительная ссылка]. Она съела кусок мяса, он её *убил*. В землю закопал и на табличке написал, что _у попа была подозрительная ссылка..._
-
 ```
 
+= Режимы
 
+- Разметка
+```typst
+У попа была собака
+```
+- Код
+- Математика
+$
+integral.double (sin^2 x)/2 dif x
+$
+
+== Режим разметки
+
+Представляет собой непосредственно текст, разбавленный обозначениями заголовков, списков, ссылок...
+
+Именно в этом режиме Typst работает по умолчанию
+
+== Режим кода
+
+#grid(columns: (1fr, auto, 1fr),
+```typst
+#{
+  let a = 42
+  let b = a + 28
+  str(b) + " * 2 * 0,5 - 1"
+},
+```,
+{set text(size: 64pt)
+set align(center + horizon)
+$arrow.r.double$},
+{
+  set align(center + horizon)
+  let a = 42
+  let b = a + 28
+  str(b) + " * 2 * 0,5 - 1"
+})
+
+- ```rust let var = value ```
+- ```rust if condition { } else { }```
+- ```rust while condition { }```
+
+== Математический режим
+
+#grid(columns: (1fr, auto, 1fr),
+```typst
+$
+integral.double (sin^2 x)/2 dif x
+$
+```,
+{set text(size: 64pt)
+set align(center + horizon)
+$arrow.r.double$},
+{set align(center + horizon)
+$
+integral.double (sin^2 x)/2 dif x
+$
+}
+)
+
+== Нюанс с форматированием
+
+#table(columns: (1fr, 1fr, 1fr),
+table.header([*Конструкция*], [*Функция*], [*Действие*]),
+[_пустая строка_], [```typst #parbreak```], [_новый абзац_],
+[```typst *жирный* ```], [```typst #strong[жирный]```], [*жирный*],
+raw("- Раз
+- Дваз
+- Триз", lang: "typst"),
+raw(lang: "typst", "#list(
+  [Раз], [Дваз], [Триз]
+)"),
+[
+- Раз
+- Дваз
+- Триз
+],
+table.cell(colspan: 3, align: center)[...]
+)
+
+== 
 
 = Example Section Title
 
