@@ -246,13 +246,13 @@ table.cell(colspan: 3, align: center, {
 == 
 #{
   show grid.cell: set align(horizon)
-  show raw: it => block(inset: 5mm, block(fill: rgb("#efefef"), inset: 5mm, it))
   grid(columns: (auto, auto, auto, 90mm, auto, auto),
     {
       set align(center + horizon)
       set text(size: 1.5em)
       $($
     },
+    block(inset: 5mm, block(fill: rgb("#efefef"), inset: 5mm,
     zebraw(
       raw(
         lang: "typst",
@@ -262,12 +262,13 @@ table.cell(colspan: 3, align: center, {
 }
 ```"
       )
-    ),
+    ))),
     {
       set align(center + horizon)
       set text(size: 1.5em)
       $<=>$
     },
+    block(inset: 5mm, block(fill: rgb("#efefef"), inset: 5mm,
     zebraw(
       raw(
       lang: "typst",
@@ -278,7 +279,7 @@ table.cell(colspan: 3, align: center, {
 }\"
 )"
       )
-    ),
+    ))),
     {
       set align(center + horizon)
       set text(size: 1.5em)
@@ -293,6 +294,64 @@ table.cell(colspan: 3, align: center, {
   )
 }
 
-== 
+#section[Правила]
+
+== Правила
+
+- Установочные правила
+- Правила показа
+
+== Установочные правила
+
+#{
+  show grid.cell: set align(horizon)
+  grid(columns: (1fr, 50mm, 1fr, auto),
+```typst
+#raw(
+"int main() {
+  return 0;
+}"
+)
+```,
+    {
+      set align(center + horizon)
+      set text(size: 1.5em)
+      $=>$
+    },
+    raw(
+"int main() {
+  return 0;
+}"
+    )
+  )
+}
+
+== Установочные правила
 
 
+#{
+  show grid.cell: set align(horizon)
+  grid(columns: (1.5fr, 50mm, 1fr, auto),
+```typst
+#set raw(lang: "cpp")
+#raw(
+"int main() {
+  return 0;
+}"
+)
+```,
+    {
+      set align(center + horizon)
+      set text(size: 1.5em)
+      $=>$
+    },
+    {
+      set raw(lang: "cpp")
+      raw(
+"int main() {
+  return 0;
+}"
+      )
+    }
+  )
+}
