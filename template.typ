@@ -1,6 +1,7 @@
 #import "@preview/touying:0.6.1": *
 #import "@preview/touying-unistra-pristine:1.4.1": *
 #import "@preview/zebraw:0.5.5": *
+#import "@preview/cades:0.3.0": qr-code
 #show: zebraw
 
 #show: unistra-theme.with(
@@ -196,13 +197,17 @@ $
 
 #section[Насколько это мощно?]
 
-= Example Section Title
-
 == Example Slide
 
 A slide with *important information*.
 
 #lorem(50)
+
+== Презентация на GitHub?
+#{
+  set align(center)
+  qr-code("https://github.com/danilasar/hello-typst")
+}
 
 == Нюанс с форматированием
 
@@ -238,5 +243,56 @@ table.cell(colspan: 3, align: center, {
   image("raw.png")
 }
 
+== 
+#{
+  show grid.cell: set align(horizon)
+  show raw: it => block(inset: 5mm, block(fill: rgb("#efefef"), inset: 5mm, it))
+  grid(columns: (auto, auto, auto, 90mm, auto, auto),
+    {
+      set align(center + horizon)
+      set text(size: 1.5em)
+      $($
+    },
+    zebraw(
+      raw(
+        lang: "typst",
+"```язык
+какой-то {
+  код
+}
+```"
+      )
+    ),
+    {
+      set align(center + horizon)
+      set text(size: 1.5em)
+      $<=>$
+    },
+    zebraw(
+      raw(
+      lang: "typst",
+"#raw(
+  lang: \"язык\",
+\"какой-то {
+  код
+}\"
+)"
+      )
+    ),
+    {
+      set align(center + horizon)
+      set text(size: 1.5em)
+      $) =>$
+    },
+    raw(
+"какой-то {
+  код
+}
+"
+    )
+  )
+}
+
+== 
 
 
