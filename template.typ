@@ -10,7 +10,7 @@
     subtitle: [Что такое Typst и с чем его едят],
     author: [Данила Григорьев],
     date: datetime.today().display("[day] августа, [year repr:full]"),
-    logo: image("unistrafooter.svg")
+    logo: [rand()]
   ),
 )
 
@@ -194,6 +194,16 @@ $
 }
 )
 
+#section[Насколько это мощно?]
+
+= Example Section Title
+
+== Example Slide
+
+A slide with *important information*.
+
+#lorem(50)
+
 == Нюанс с форматированием
 
 #table(columns: (1fr, 1fr, 1fr),
@@ -204,22 +214,29 @@ raw("- Раз
 - Дваз
 - Триз", lang: "typst"),
 raw(lang: "typst", "#list(
-  [Раз], [Дваз], [Триз]
+  [Раз],
+  [Дваз],
+  [Триз]
 )"),
 [
 - Раз
 - Дваз
 - Триз
 ],
-table.cell(colspan: 3, align: center)[...]
+table.cell(colspan: 3, align: center, {
+  v(0.25em)
+  $dots$
+  v(0.25em)
+}
+)
 )
 
-== 
+== Немного подробнее про функции
 
-= Example Section Title
+#{
+  set align(horizon + center)
+  image("raw.png")
+}
 
-== Example Slide
 
-A slide with *important information*.
 
-#lorem(50)
